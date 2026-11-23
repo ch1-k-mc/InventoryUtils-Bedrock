@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "info": {
     "name": "Inventory Utils",
-    "description": "An unofficial Bedrock Edition (LeviLamina) port of the Java Edition mods Item Scroller and Inventory Profiles Next, with Crafting Tools-style features and hotbar favorites.",
+    "description": "An unofficial Bedrock Edition (LeviLamina) port of the Java Edition mods Item Scroller and Inventory Profiles Next, with Crafting Tools (features equivalent to Crafting Tweaks, written independently) and hotbar favorites.",
     "tags": [
       "platform:levilamina",
       "type:mod",

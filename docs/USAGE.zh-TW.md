@@ -82,7 +82,7 @@
 | `T` | 執行全域收藏交易 |
 | `Shift+T` | 執行此村民的收藏交易 |
 
-### 合成工具 類功能（僅工作台）
+### 合成工具（僅工作台）
 
 網格左側會出現 3 個按鈕。**快捷鍵預設未指派**，請在設定畫面中指派。
 
@@ -140,6 +140,6 @@
 | `inventoryprofilesnext/<世界名稱>/lockSlots.txt` | 欄位鎖定 |
 | `inventoryprofilesnext/<世界名稱>/profiles-V2.txt` | 設定檔 |
 | `inventoryprofilesnext/villager-trading-config-v2.json` | 交易收藏 |
-| `craftingtools.json` | 合成工具 類功能設定（`mode`：`BUTTONS_AND_KEYS` / `KEYS_ONLY` / `DISABLED`，`showButtons`，快捷鍵） |
+| `craftingtools.json` | 合成工具設定（`mode`：`BUTTONS_AND_KEYS` / `KEYS_ONLY` / `DISABLED`，`showButtons`，快捷鍵） |
 | `hotbarfavorites.json` | 快捷列收藏設定 |
 | `hotbar-favorites.json` | 已儲存的快捷列 |

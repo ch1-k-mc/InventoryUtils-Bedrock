@@ -2,13 +2,11 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md)
 
-<img src="docs/images/icon.png" alt="Inventory Utils" width="128">
-
 ![Inventory Utils](docs/images/screenshot.png)
 
-Minecraft 統合版のインベントリ操作をまとめた [LeviLamina](https://github.com/LiteLDev/LeviLamina) 向けのクライアント Mod です。Java 版の Mod [Item Scroller](https://github.com/sakura-ryoko/itemscroller) と [Inventory Profiles Next](https://codeberg.org/Inventory-Profiles-Next-Mod/IPN) を移植し、クラフトツール に相当する機能（独自の実装）とホットバーのお気に入りを加えています。
+Minecraft 統合版のインベントリ操作をまとめた [LeviLamina](https://github.com/LiteLDev/LeviLamina) 向けのクライアント Mod です。Java 版の Mod [Item Scroller](https://github.com/sakura-ryoko/itemscroller) と [Inventory Profiles Next](https://codeberg.org/Inventory-Profiles-Next-Mod/IPN) を移植し、[Crafting Tweaks](https://www.curseforge.com/minecraft/mc-mods/crafting-tweaks) に相当する機能を独自に実装した「クラフトツール」と、ホットバーのお気に入りを加えています。
 
-> Item Scroller・malilib・Inventory Profiles Next・libIPN・クラフトツール の作者、および Mojang・Microsoft とは関係のない、非公式の移植です。この Mod の問題を本家の作者に問い合わせないでください。
+> Item Scroller・malilib・Inventory Profiles Next・libIPN・Crafting Tweaks の作者、および Mojang・Microsoft とは関係のない、非公式の移植です。この Mod の問題を本家の作者に問い合わせないでください。
 
 ## 必要なもの
 
@@ -50,7 +48,7 @@ LeviLamina（client）のゲームフォルダで実行します。
 
 - **Item Scroller**: ホイール・ドラッグ・キーの組み合わせで移動・廃棄・クラフト。クリエイティブでも動く（`enableInCreative`、既定オン）
 - **Inventory Profiles Next**: 並べ替え・全部移動・スロットのロック・自動補充・プロファイル・連続クラフト・村人の取引のお気に入り
-- **クラフトツール 相当**: 作業台での回す・ならす・広げる・クリア・圧縮・展開
+- **クラフトツール**: 作業台での回す・ならす・広げる・クリア・圧縮・展開
 - **ホットバーのお気に入り**: ホットバー全体を保存して呼び出す（JEI 不要）
 - 機能ごとのタブを持つ 1 つの設定画面
 - 英語・日本語・中国語（簡体字・繁体字）

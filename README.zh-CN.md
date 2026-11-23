@@ -2,13 +2,11 @@
 
 [English](README.md) | [日本語](README.ja.md) | [繁體中文](README.zh-TW.md)
 
-<img src="docs/images/icon.png" alt="Inventory Utils" width="128">
-
 ![Inventory Utils](docs/images/screenshot.png)
 
-将 Minecraft 基岩版的物品栏操作整合到一个 [LeviLamina](https://github.com/LiteLDev/LeviLamina) 客户端模组中。本模组移植了 Java 版模组 [Item Scroller](https://github.com/sakura-ryoko/itemscroller) 和 [Inventory Profiles Next](https://codeberg.org/Inventory-Profiles-Next-Mod/IPN)，并加入了独立实现的 合成工具 类功能和快捷栏收藏。
+将 Minecraft 基岩版的物品栏操作整合到一个 [LeviLamina](https://github.com/LiteLDev/LeviLamina) 客户端模组中。本模组移植了 Java 版模组 [Item Scroller](https://github.com/sakura-ryoko/itemscroller) 和 [Inventory Profiles Next](https://codeberg.org/Inventory-Profiles-Next-Mod/IPN)，并加入了独立实现、功能相当于 [Crafting Tweaks](https://www.curseforge.com/minecraft/mc-mods/crafting-tweaks) 的“合成工具”以及快捷栏收藏。
 
-> 这是非官方移植，与 Item Scroller、malilib、Inventory Profiles Next、libIPN、合成工具 的作者以及 Mojang、Microsoft 无关。请勿就本模组的问题联系原作者。
+> 这是非官方移植，与 Item Scroller、malilib、Inventory Profiles Next、libIPN、Crafting Tweaks 的作者以及 Mojang、Microsoft 无关。请勿就本模组的问题联系原作者。
 
 ## 运行要求
 
@@ -50,7 +48,7 @@ lip install github.com/ch1-k-mc/InventoryUtils-Bedrock
 
 - **Item Scroller**：通过滚轮、拖动和组合键移动、丢弃、合成；创造模式下也可用（`enableInCreative`，默认开启）
 - **Inventory Profiles Next**：整理、全部移动、槽位锁定、自动补充、配置档、连续合成、村民交易收藏
-- **合成工具 类功能**：在工作台上旋转、均分、铺开、清空、压缩、解压
+- **合成工具**：在工作台上旋转、均分、铺开、清空、压缩、解压
 - **快捷栏收藏**：保存并调用整条快捷栏，无需 JEI
 - 按功能分标签页的统一设置界面
 - 英语、日语、中文（简体 / 繁体）

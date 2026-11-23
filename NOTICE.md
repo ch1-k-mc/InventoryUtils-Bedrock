@@ -62,7 +62,7 @@ Translations added for the Bedrock port are new, including the Japanese translat
 
 ## Crafting Tools
 
-The Crafting Tools feature is this project's own design and implementation. It contains no code, language files or images from any other mod.
+Crafting Tools provides features equivalent to Crafting Tweaks (TwelveIterations / BlayTheNinth, All Rights Reserved). It is this project's own design and implementation, written from the public feature description. It contains no code, language files or images from Crafting Tweaks, and is not affiliated with or endorsed by its authors.
 
 ## Icon
 

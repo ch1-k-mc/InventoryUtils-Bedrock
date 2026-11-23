@@ -82,7 +82,7 @@
 | `T` | 全体のお気に入りの取引を実行する |
 | `Shift+T` | この村人のお気に入りの取引を実行する |
 
-### クラフトツール 相当（作業台のみ）
+### クラフトツール（作業台のみ）
 
 グリッドの左に 3 つのボタンが出ます。**ホットキーは既定で未割当**なので、設定画面で割り当ててください。
 
@@ -140,6 +140,6 @@
 | `inventoryprofilesnext/<ワールド名>/lockSlots.txt` | スロットのロック |
 | `inventoryprofilesnext/<ワールド名>/profiles-V2.txt` | プロファイル |
 | `inventoryprofilesnext/villager-trading-config-v2.json` | 取引のお気に入り |
-| `craftingtools.json` | クラフトツール 相当の設定（`mode`: `BUTTONS_AND_KEYS` / `KEYS_ONLY` / `DISABLED`、`showButtons`、ホットキー） |
+| `craftingtools.json` | クラフトツールの設定（`mode`: `BUTTONS_AND_KEYS` / `KEYS_ONLY` / `DISABLED`、`showButtons`、ホットキー） |
 | `hotbarfavorites.json` | ホットバーのお気に入りの設定 |
 | `hotbar-favorites.json` | 保存したホットバー |

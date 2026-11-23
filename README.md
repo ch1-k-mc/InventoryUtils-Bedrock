@@ -2,13 +2,11 @@
 
 [日本語](README.ja.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md)
 
-<img src="docs/images/icon.png" alt="Inventory Utils" width="128">
-
 ![Inventory Utils](docs/images/screenshot.png)
 
-Inventory tools for Minecraft: Bedrock Edition in one [LeviLamina](https://github.com/LiteLDev/LeviLamina) client mod. It ports the Java Edition mods [Item Scroller](https://github.com/sakura-ryoko/itemscroller) and [Inventory Profiles Next](https://codeberg.org/Inventory-Profiles-Next-Mod/IPN), and adds an independently written implementation of Crafting Tools-style features and hotbar favorites.
+Inventory tools for Minecraft: Bedrock Edition in one [LeviLamina](https://github.com/LiteLDev/LeviLamina) client mod. It ports the Java Edition mods [Item Scroller](https://github.com/sakura-ryoko/itemscroller) and [Inventory Profiles Next](https://codeberg.org/Inventory-Profiles-Next-Mod/IPN), and adds Crafting Tools, an independently written set of crafting grid features equivalent to [Crafting Tweaks](https://www.curseforge.com/minecraft/mc-mods/crafting-tweaks), and hotbar favorites.
 
-> This is an unofficial port, not affiliated with the authors of Item Scroller, malilib, Inventory Profiles Next, libIPN or Crafting Tools, or with Mojang or Microsoft. Please do not report issues with this mod to them.
+> This is an unofficial port, not affiliated with the authors of Item Scroller, malilib, Inventory Profiles Next, libIPN or Crafting Tweaks, or with Mojang or Microsoft. Please do not report issues with this mod to them.
 
 ## Requirements
 
@@ -50,7 +48,7 @@ See [Usage](docs/USAGE.md) for all keys, the settings screen, commands and confi
 
 - **Item Scroller**: move, drop and craft with the wheel, drags and key combinations; also works in Creative (`enableInCreative`, on by default)
 - **Inventory Profiles Next**: sorting, move all, slot locks, auto refill, profiles, continuous crafting, villager trade favorites
-- **Crafting Tools-style features**: rotate, balance, spread, clear, compress and decompress on the crafting table
+- **Crafting Tools**: rotate, balance, spread, clear, compress and decompress on the crafting table
 - **Hotbar favorites**: save and recall whole hotbars, no JEI required
 - One settings screen with a tab for each feature set
 - English, Japanese and Chinese (Simplified / Traditional)

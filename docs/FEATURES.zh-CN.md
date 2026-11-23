@@ -23,7 +23,7 @@
 - **铁砧**：Fast Rename
 - **村民交易**：全局 / 单个村民的收藏，按键执行
 
-## 合成工具 类功能
+## 合成工具
 
 根据公开的功能说明独立实现。仅限工作台。
 
@@ -40,7 +40,7 @@
 
 ## 设置界面
 
-一个界面（`R+C` 或 `/invutils gui`）包含 Item Scroller、Inventory Profiles Next、合成工具 类功能和快捷栏收藏的标签页。提供搜索、章节索引、滑块、快捷键录入和各选项的重置。
+一个界面（`R+C` 或 `/invutils gui`）包含 Item Scroller、Inventory Profiles Next、合成工具和快捷栏收藏的标签页。提供搜索、章节索引、滑块、快捷键录入和各选项的重置。
 
 ## 与 Java 版的差异
 

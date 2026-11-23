@@ -82,7 +82,7 @@
 | `T` | Run global favorite trades |
 | `Shift+T` | Run this villager's favorite trades |
 
-### Crafting Tools-style features (crafting table only)
+### Crafting Tools (crafting table only)
 
 Three buttons appear left of the grid. **The hotkeys are unassigned by default**; assign them in the settings screen.
 
@@ -140,6 +140,6 @@ Files are in `mods/InventoryUtils/config/`.
 | `inventoryprofilesnext/<world>/lockSlots.txt` | Slot locks |
 | `inventoryprofilesnext/<world>/profiles-V2.txt` | Profiles |
 | `inventoryprofilesnext/villager-trading-config-v2.json` | Trade favorites |
-| `craftingtools.json` | Crafting Tools-style settings (`mode`: `BUTTONS_AND_KEYS` / `KEYS_ONLY` / `DISABLED`, `showButtons`, hotkeys) |
+| `craftingtools.json` | Crafting Tools settings (`mode`: `BUTTONS_AND_KEYS` / `KEYS_ONLY` / `DISABLED`, `showButtons`, hotkeys) |
 | `hotbarfavorites.json` | Hotbar favorites settings |
 | `hotbar-favorites.json` | Saved hotbars |

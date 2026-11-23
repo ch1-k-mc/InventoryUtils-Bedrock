@@ -23,7 +23,7 @@
 - **Anvil**: Fast Rename
 - **Villager trading**: global and per-villager favorites, run with a key
 
-## Crafting Tools-style features
+## Crafting Tools
 
 Written independently from the public feature descriptions. Crafting table only.
 
@@ -40,7 +40,7 @@ Written independently from the public feature descriptions. Crafting table only.
 
 ## Settings screen
 
-One screen (`R+C` or `/invutils gui`) with tabs for Item Scroller, Inventory Profiles Next, Crafting Tools-style features and Hotbar Favorites. Includes search, section index, sliders, hotkey capture and per-option reset.
+One screen (`R+C` or `/invutils gui`) with tabs for Item Scroller, Inventory Profiles Next, Crafting Tools and Hotbar Favorites. Includes search, section index, sliders, hotkey capture and per-option reset.
 
 ## Differences from Java Edition
 
