@@ -38,7 +38,7 @@ std::vector<std::string> split(std::string const& s) {
 }
 
 void usage() {
-    chat("/invutils config list [区画] | get <区画> <名前> | set <区画> <名前> <値> | reset <区画> <名前>、/invutils reload | save、/invutils gui [itemscroller | ipnext | craftingtools | favorites]（設定画面）");
+    chat("/invutils config list [section] | get <section> <name> | set <section> <name> <value> | reset <section> <name>, /invutils reload | save, /invutils gui [itemscroller | ipnext | craftingtools | favorites]");
 }
 
 void configCommand(std::vector<std::string> const& a) {
@@ -49,16 +49,16 @@ void configCommand(std::vector<std::string> const& a) {
         if (a.size() < 4) {
             std::string names;
             for (auto const& n : reg.categoryNames()) names += (names.empty() ? "" : ", ") + n;
-            return chat("区画: " + names);
+            return chat("Sections: " + names);
         }
         auto opts = reg.options(a[3]);
-        if (opts.empty()) return chat("区画が無い: " + a[3]);
+        if (opts.empty()) return chat("No such section: " + a[3]);
         for (auto* o : opts) chat(o->getName() + " = " + o->getStringValue());
         return;
     }
     if (a.size() < 5) return usage();
     auto* option = reg.find(a[3], a[4]);
-    if (!option) return chat("項目が無い: " + a[3] + " " + a[4]);
+    if (!option) return chat("No such option: " + a[3] + " " + a[4]);
     if (sub == "get") return chat(a[3] + " " + option->getName() + " = " + option->getStringValue());
     if (sub == "reset") {
         option->resetToDefault();
@@ -66,7 +66,7 @@ void configCommand(std::vector<std::string> const& a) {
         if (a.size() < 6) return usage();
         std::string value = a[5];
         for (size_t i = 6; i < a.size(); ++i) value += " " + a[i];
-        if (!option->setValueFromString(value)) return chat("値を受け付けなかった: " + value);
+        if (!option->setValueFromString(value)) return chat("Value rejected: " + value);
     } else {
         return usage();
     }
@@ -109,10 +109,10 @@ bool handle(std::string const& commandLine) {
     else if (a[1] == "reload") {
         reg.loadAll();
         platform::input::InputHandler::get().updateUsedKeys();
-        chat("設定ファイルを読み直した");
+        chat("Reloaded the config files");
     } else if (a[1] == "save") {
         reg.saveAll();
-        chat("設定ファイルを書き出した");
+        chat("Saved the config files");
     } else if (a[1] == "gui") {
         std::string const which = a.size() >= 3 ? a[2] : "itemscroller";
         gui::host::requestOpen(which);

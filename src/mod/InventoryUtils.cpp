@@ -23,7 +23,7 @@ InventoryUtils& InventoryUtils::getInstance() {
 }
 
 bool InventoryUtils::load() {
-    getSelf().getLogger().info("Inventory Utils: 読み込み");
+    getSelf().getLogger().info("Inventory Utils: loading");
     command::install();
     gui::GuiManager::installHooks();
     ipnext::event::villagers::VillagerTradeManager::get().install();
@@ -39,7 +39,7 @@ bool InventoryUtils::enable() {
     craftingtools::install();
     favorites::HotbarFavorites::get().install();
     gui::host::install();
-    getSelf().getLogger().info("Inventory Utils: 有効化");
+    getSelf().getLogger().info("Inventory Utils: enabled");
     return true;
 }
 
@@ -51,7 +51,7 @@ bool InventoryUtils::disable() {
     itemscroller::InitHandler::unregisterModHandlers();
     platform::input::InputHandler::get().uninstall();
     platform::screen::ScreenTracker::uninstall();
-    getSelf().getLogger().info("Inventory Utils: 無効化");
+    getSelf().getLogger().info("Inventory Utils: disabled");
     return true;
 }
 

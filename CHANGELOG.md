@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+- Updated the package description and README: Crafting Tools is described as an independent implementation of features equivalent to Crafting Tweaks.
+- Chat messages of the `/invutils` command and log messages are now in English.
+- With JustEnoughItems that supports it, the JEI side panel starts below the hotbar favorites panel.
+
 ## 0.1.0 — first release
 
 Initial release for Minecraft: Bedrock Edition 1.26.60 / LeviLamina 26.60.x (client).

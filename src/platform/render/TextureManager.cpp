@@ -64,7 +64,7 @@ mce::ClientTexture const* TextureManager::getClientTexture(MinecraftUIRenderCont
             if (loaded && !missing) {
                 if (!e.loaded) {
                     e.loaded = true;
-                    ll::mod::NativeMod::current()->getLogger().info("テクスチャを読めた（{}）: {}", e.how, relativePath);
+                    ll::mod::NativeMod::current()->getLogger().info("Loaded texture ({}): {}", e.how, relativePath);
                 }
                 return &data->mClientTexture.get();
             }
@@ -79,7 +79,7 @@ mce::ClientTexture const* TextureManager::getClientTexture(MinecraftUIRenderCont
         ++e.attempt;
     }
     e.failed = true;
-    ll::mod::NativeMod::current()->getLogger().warn("テクスチャを読めなかった（候補をすべて試した）: {}", relativePath);
+    ll::mod::NativeMod::current()->getLogger().warn("Could not load texture (tried all candidates): {}", relativePath);
     return nullptr;
 }
 

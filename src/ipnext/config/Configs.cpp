@@ -502,7 +502,7 @@ void loadFromFile() {
     std::ifstream in(path, std::ios::binary);
     auto          root = nlohmann::json::parse(in, nullptr, false);
     if (!root.is_object()) {
-        ll::mod::NativeMod::current()->getLogger().error("inventoryprofiles.json を読めなかった（JSON が壊れている）");
+        ll::mod::NativeMod::current()->getLogger().error("Could not read inventoryprofiles.json (broken JSON)");
         return;
     }
     for (auto& [cat, options] : categories()) readConfigBase(root, cat, options);

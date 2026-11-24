@@ -457,7 +457,7 @@ void HotbarFavorites::onContainerOverlay(ScreenView&, MinecraftUIRenderContext& 
     else if (hovered >= 0) {
         tip.push_back(mEntries[static_cast<std::size_t>(hovered)].label);
         for (auto const& st : (*gIcons)[static_cast<std::size_t>(hovered)]) {
-            if (st && !isEmpty(*st)) tip.push_back(std::to_string(static_cast<int>(st->mCount)) + " × " + ipnext::item::ItemType::of(*st).displayName());
+            if (st && !isEmpty(*st)) tip.push_back(std::to_string(static_cast<int>(st->mCount)) + " x " + ipnext::item::ItemType::of(*st).displayName());
         }
         tip.push_back(translate("inventoryutils.favorites.rowHint"));
     }

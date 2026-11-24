@@ -159,11 +159,11 @@ std::string displayName(int code) {
     case VK_RSHIFT: return "Shift";
     case VK_LMENU:
     case VK_RMENU: return "Alt";
-    case MOUSE_LEFT: return "左クリック";
-    case MOUSE_RIGHT: return "右クリック";
-    case MOUSE_MIDDLE: return "中クリック";
-    case MOUSE_SCROLL_UP: return "ホイール上";
-    case MOUSE_SCROLL_DOWN: return "ホイール下";
+    case MOUSE_LEFT: return "Left Click";
+    case MOUSE_RIGHT: return "Right Click";
+    case MOUSE_MIDDLE: return "Middle Click";
+    case MOUSE_SCROLL_UP: return "Wheel Up";
+    case MOUSE_SCROLL_DOWN: return "Wheel Down";
     default: break;
     }
     return toName(code);

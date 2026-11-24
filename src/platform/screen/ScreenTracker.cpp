@@ -74,7 +74,7 @@ void onAfterUiRender(ll::event::AfterUIRenderEvent& e) {
 
 void record(ll::event::BeforeUIRenderEvent& e, std::string const& name) {
     if (gSeen.insert(name).second) {
-        ll::mod::NativeMod::current()->getLogger().info("画面を初めて見た: {}", name);
+        ll::mod::NativeMod::current()->getLogger().info("First seen screen: {}", name);
     }
     if (name == "hud_screen") gHudController = e.screenView().mController;
     auto ci = ll::service::getClientInstance();
@@ -109,7 +109,7 @@ void logCollectionsOnce(std::string const& name) {
         if (!list.empty()) list += ", ";
         list += collection + "(" + std::to_string(size) + ")";
     }
-    ll::mod::NativeMod::current()->getLogger().info("集まり {}: {}", name, list);
+    ll::mod::NativeMod::current()->getLogger().info("Collection {}: {}", name, list);
 }
 
 }

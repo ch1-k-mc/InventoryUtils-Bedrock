@@ -17,7 +17,7 @@ if not has_config("vs_runtime") then
 end
 
 target("InventoryUtils")    add_rules("@levibuildscript/linkrule")
-    add_rules("@levibuildscript/modpacker", {modVersion = "0.1.0"})    if is_plat("windows") then
+    add_rules("@levibuildscript/modpacker", {modVersion = "0.1.1"})    if is_plat("windows") then
         add_defines("NOMINMAX", "UNICODE", "_HAS_CXX23=1")
         set_exceptions("none")        add_cxflags( "/EHa", "/utf-8", "/W4", "/w44265", "/w44289", "/w44296", "/w45263", "/w44738", "/w45204")
         add_cxflags(

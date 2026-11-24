@@ -448,7 +448,7 @@ void VillagerTradeManager::load() {
     if (!in) return;
     auto root = json::parse(in, nullptr, false);
     if (!root.is_object()) {
-        Log::warn("villager-trading-config-v2.json を読めなかった（JSON が壊れている）");
+        Log::warn("Could not read villager-trading-config-v2.json (broken JSON)");
         return;
     }
     auto readMap = [&](std::string const& key, BookmarkMap& out) {

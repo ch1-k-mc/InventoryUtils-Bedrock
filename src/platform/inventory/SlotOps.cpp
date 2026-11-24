@@ -54,7 +54,7 @@ nlohmann::json snapshot(int limitPerCollection, bool includeEmpty, bool hud) {
     nlohmann::json r{{"screen", hud ? std::string("hud_screen") : ScreenTracker::containerScreenName()}};
     auto*          mgr = managerOf(hud);
     if (!mgr) {
-        r["error"] = hud ? "HUD の manager が無い" : "コンテナ画面が開いていない";
+        r["error"] = hud ? "No HUD manager" : "No container screen is open";
         return r;
     }
     nlohmann::json byName = nlohmann::json::object();
@@ -87,8 +87,8 @@ nlohmann::json runOp(std::string const& op, Slot const& src, Slot const& dst, in
     item::ScopedItemRegistry scoped;
     auto* csc = hud ? nullptr : ScreenTracker::containerScreen();
     auto* mgr = managerOf(hud);
-    if (!mgr) return {{"ok", false}, {"error", hud ? "HUD の manager が無い" : "コンテナ画面が開いていない"}};
-    if (!csc && op.rfind("screen.", 0) == 0) return {{"ok", false}, {"error", "screen.* はコンテナ画面でだけ"}};
+    if (!mgr) return {{"ok", false}, {"error", hud ? "No HUD manager" : "No container screen is open"}};
+    if (!csc && op.rfind("screen.", 0) == 0) return {{"ok", false}, {"error", "screen.* works only on a container screen"}};
     SlotData       s(src.collection, src.index);
     SlotData       d(dst.collection, dst.index);
     nlohmann::json r{{"ok", true}, {"op", op}};
@@ -104,7 +104,7 @@ nlohmann::json runOp(std::string const& op, Slot const& src, Slot const& dst, in
     else if (op == "screen.placeAll") csc->_handlePlaceAll(src.collection, src.index);
     else if (op == "screen.placeOne") csc->_handlePlaceOne(src.collection, src.index);
     else if (op == "screen.takePlace") r["returned"] = csc->_handleTakePlace(src.collection, src.index, all);
-    else return {{"ok", false}, {"error", "未知の op: " + op}};
+    else return {{"ok", false}, {"error", "Unknown op: " + op}};
     r["after"] = {
         {"src",    slotJson(src, hud)                },
         {"dst",    slotJson(dst, hud)                },

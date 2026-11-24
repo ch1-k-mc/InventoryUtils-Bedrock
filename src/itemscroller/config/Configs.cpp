@@ -169,7 +169,7 @@ void loadFromFile() {
     auto path = configFile();
     auto log  = [](std::string const& m) { ll::mod::NativeMod::current()->getLogger().info("{}", m); };
     if (!std::filesystem::exists(path)) {
-        log("itemscroller.json が無いので既定値で作る");
+        log("itemscroller.json not found, creating it with default values");
         saveToFile();
         registerCraftingGrids();
         return;
@@ -177,7 +177,7 @@ void loadFromFile() {
     std::ifstream in(path, std::ios::binary);
     auto          root = nlohmann::json::parse(in, nullptr, false);
     if (!root.is_object()) {
-        ll::mod::NativeMod::current()->getLogger().error("loadFromFile(): itemscroller.json を読めなかった（JSON が壊れている）");
+        ll::mod::NativeMod::current()->getLogger().error("loadFromFile(): could not read itemscroller.json (broken JSON)");
         return;
     }
     for (auto& [cat, options] : categories()) malilib::config::readConfigBase(root, cat, options);
