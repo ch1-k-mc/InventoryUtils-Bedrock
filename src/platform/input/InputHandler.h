@@ -44,6 +44,7 @@ public:
     [[nodiscard]] double mouseX() const { return mMouseX; }
     [[nodiscard]] double mouseY() const { return mMouseY; }
     [[nodiscard]] bool   isKeyDown(int code) const;
+    [[nodiscard]] static bool textInputActive();
 
     void onClientTick();
     void checkFocus();

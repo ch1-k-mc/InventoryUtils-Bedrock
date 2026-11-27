@@ -231,7 +231,7 @@ void HotbarFavorites::install() {
     gListeners.push_back(ll::event::EventBus::getInstance().emplaceListener<ll::event::MouseInputEvent>(
         [this](ll::event::MouseInputEvent& e) {
             auto& in = platform::input::InputHandler::get();
-            if (static_cast<int>(e.actionButtonId()) == ::MouseAction::ActionWheel && mPanelVisible && inPanel(in.mouseX(), in.mouseY())) {
+            if (static_cast<int>(e.actionButtonId()) == ::MouseAction::ActionWheel && panelActive() && inPanel(in.mouseX(), in.mouseY())) {
                 mScroll += static_cast<int>(e.buttonData()) > 0 ? -1 : 1;
                 e.cancel();
                 return;
@@ -247,7 +247,7 @@ void HotbarFavorites::install() {
     }));
     gListeners.push_back(ll::event::EventBus::getInstance().emplaceListener<ll::event::KeyInputEvent>(
         [this](ll::event::KeyInputEvent& e) {
-            if (!e.isDown() || e.keyCode() != 'A' || !mPanelVisible) return;
+            if (!e.isDown() || e.keyCode() != 'A' || !panelActive() || platform::input::InputHandler::textInputActive()) return;
             auto& in  = platform::input::InputHandler::get();
             int   row = rowAt(in.mouseX(), in.mouseY());
             if (row < 0) return;
@@ -383,6 +383,10 @@ RecallResult HotbarFavorites::recall(int index) {
     return r;
 }
 
+bool HotbarFavorites::panelActive() const {
+    return mPanelVisible && ::GetTickCount64() - mPanelDrawnAt < 250 && platform::screen::ScreenTracker::containerScreen();
+}
+
 int HotbarFavorites::visibleRows() const { return std::max(0, (mPanelH - HEADER - PAD) / CELL); }
 
 bool HotbarFavorites::inPanel(double mx, double my) const {
@@ -417,6 +421,7 @@ void HotbarFavorites::onContainerOverlay(ScreenView&, MinecraftUIRenderContext& 
         }
     }
     mPanelVisible = true;
+    mPanelDrawnAt = ::GetTickCount64();
     mScroll       = std::clamp(mScroll, 0, std::max(0, count - visibleRows()));
     mButtonX      = mPanelX + PANEL_W - BUTTON_SIZE - 2;
     mButtonY      = mPanelY + 1;
@@ -479,7 +484,7 @@ bool HotbarFavorites::onMouseClick(double mx, double my, int buttonCode, bool bu
         mPressedHere = false;
         return was;
     }
-    if (buttonCode != platform::input::KeyCodes::MOUSE_LEFT || !mPanelVisible || !platform::screen::ScreenTracker::containerScreen()) return false;
+    if (buttonCode != platform::input::KeyCodes::MOUSE_LEFT || !panelActive()) return false;
     if (!inPanel(mx, my)) return false;
     mPressedHere = true;
     platform::item::ScopedItemRegistry registry;

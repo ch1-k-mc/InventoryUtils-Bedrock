@@ -12,6 +12,7 @@
 #include "ll/api/service/TargetedBedrock.h"
 
 #include "mc/client/game/ClientInstance.h"
+#include "mc/client/input/KeyboardManager.h"
 #include "mc/deps/input/Mouse.h"
 #include "mc/deps/input/MouseDevice.h"
 #include "mc/client/gui/GuiData.h"
@@ -157,8 +158,17 @@ bool InputHandler::checkKeyBindsForChanges(int code) {
     return cancel;
 }
 
+bool InputHandler::textInputActive() {
+    auto ci = ll::service::getClientInstance();
+    return ci && ci->getKeyboardManager().isKeyboardEnabled();
+}
+
 bool InputHandler::onKey(int vk, bool down) {
     int code = KeyCodes::normalize(vk);
+    if (down && textInputActive()) {
+        trackOnly(code, down);
+        return false;
+    }
     if (down && code == 'E' && inventory::InventorySession::onInventoryKey()) return true;
     if (down) {
         if (!isKeyDown(code)) mDownKeys.push_back(code);

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.2
+
+- Fixed: the hotbar favorites panel reacted to keys and clicks outside the inventory (for example `A` while typing in chat).
+- Fixed: hotkeys no longer fire while you type in a text field (chat, search boxes, signs, anvil).
+- Fixed: after pressing `E` while an item was being swapped in the background, the inventory could stop opening.
+- In a local world, auto refill and profile switching swap items without opening a hidden inventory, so the game no longer pauses for a moment, and the inventory no longer stops opening after switching profiles.
+
 ## 0.1.1
 
 - Updated the package description and README: Crafting Tools is described as an independent implementation of features equivalent to Crafting Tweaks.

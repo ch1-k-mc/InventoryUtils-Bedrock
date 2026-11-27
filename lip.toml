@@ -1,6 +1,6 @@
 format = 4
 id = "github.com/ch1-k-mc/InventoryUtils-Bedrock"
-version = "0.1.1"
+version = "0.1.2"
 
 [info]
 name = "Inventory Utils"

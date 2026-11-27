@@ -57,6 +57,7 @@ private:
     void        save() const;
     void        changed();
     [[nodiscard]] int  visibleRows() const;
+    [[nodiscard]] bool panelActive() const;
     [[nodiscard]] bool inPanel(double mx, double my) const;
     [[nodiscard]] int  rowAt(double mx, double my) const;
 
@@ -68,6 +69,7 @@ private:
     bool               mButtonVisible = false;
     bool               mPressedHere   = false;
     bool               mPanelVisible  = false;
+    unsigned long long mPanelDrawnAt  = 0;
     int                mPanelX = 2, mPanelY = 2, mPanelH = 0, mScroll = 0;
 };
 

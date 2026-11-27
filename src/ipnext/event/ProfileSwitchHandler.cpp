@@ -24,6 +24,7 @@
 #include "ipnext/item/rule/file/RuleFiles.h"
 #include "platform/i18n/I18n.h"
 #include "platform/inventory/InventorySession.h"
+#include "platform/inventory/LegacySwap.h"
 #include "platform/inventory/SlotClicker.h"
 #include "platform/item/ScopedItemRegistry.h"
 #include "platform/screen/ScreenTracker.h"
@@ -60,32 +61,37 @@ std::string sanitized(std::string s) {
 }
 
 struct Applier {
-    SlotClicker& clicker;
+    SlotClicker* clicker = nullptr;
 
     int menuSlotOf(int inv) const {
-        for (auto const& s : clicker.menu().slots()) {
+        for (auto const& s : clicker->menu().slots()) {
             if (s.kind != platform::inventory::InventoryKind::Container && s.containerSlot == inv) return s.slotNumber;
         }
         return -1;
     }
     item::ItemStack itemAt(int inv) const {
+        if (!clicker) return item::ItemStack::of(platform::inventory::legacy::itemAt(inv));
         int id = menuSlotOf(inv);
         if (id < 0) return {};
-        auto const* s = clicker.menu().getSlot(id);
-        return s ? item::ItemStack::of(clicker.menu().getItem(*s)) : item::ItemStack();
+        auto const* s = clicker->menu().getSlot(id);
+        return s ? item::ItemStack::of(clicker->menu().getItem(*s)) : item::ItemStack();
     }
 
     void swapSlots(int to, int found) {
         AutoRefillHandler::get().markProfileSwapped(to);
+        if (!clicker) {
+            platform::inventory::legacy::swapSlots(to, found);
+            return;
+        }
         int toId = menuSlotOf(to), foundId = menuSlotOf(found);
         if (toId < 0 || foundId < 0) return;
         if (to >= 0 && to <= 8) {
-            clicker.clickSlot(foundId, to, ClickType::SWAP);
+            clicker->clickSlot(foundId, to, ClickType::SWAP);
         } else {
-            clicker.leftClickSlot(foundId);
-            clicker.leftClickSlot(toId);
-            auto const& carried = clicker.menu().getCarried();
-            if (!carried.isNull() && carried.mCount > 0) clicker.leftClickSlot(foundId);
+            clicker->leftClickSlot(foundId);
+            clicker->leftClickSlot(toId);
+            auto const& carried = clicker->menu().getCarried();
+            if (!carried.isNull() && carried.mCount > 0) clicker->leftClickSlot(foundId);
         }
     }
 
@@ -342,11 +348,24 @@ void ProfileSwitchHandler::onClientTick() {
 void ProfileSwitchHandler::applyProfile() {
     if (GuiSettings::ENABLE_PROFILES_ANNOUNCEMENT.getBooleanValue()) platform::util::actionBar(mTarget.name);
     ProfileData target = mTarget;
+    if (platform::inventory::legacy::available()) {
+        platform::item::ScopedItemRegistry registry;
+        Applier                            a{nullptr};
+        auto                               sourceSlots = allSlots();
+        for (auto const& slot : target.slots) {
+            if (a.findAndSwap(slot, sourceSlots)) std::erase(sourceSlots, invSlotOf(slot.id));
+        }
+        mLastResult = "applied " + target.name;
+        if (target.active != ProfileSlotId::NONE) {
+            if (auto* p = localPlayer()) p->mInventory->selectSlot(invSlotOf(target.active), ContainerID::Inventory);
+        }
+        return;
+    }
     bool        requested = platform::inventory::InventorySession::request(
         [target](ContainerScreenController& csc, ContainerManagerController& mgr) {
             auto        menu = platform::inventory::ContainerMenu::fromManager(mgr, "inventory_screen", &csc);
             SlotClicker clicker(csc, menu);
-            Applier     a{clicker};
+            Applier     a{&clicker};
             auto        sourceSlots = allSlots();
             for (auto const& slot : target.slots) {
                 if (a.findAndSwap(slot, sourceSlots)) {

@@ -46,7 +46,6 @@ struct Session {
 
 Session        gSession;
 nlohmann::json gLast = nlohmann::json::object();
-bool           gReopen = false;
 
 void finish(bool ok, std::string const& reason) {
     if (auto root = gSession.hiddenRoot.lock()) root->mVisible = gSession.rootVisible;
@@ -62,11 +61,6 @@ void finish(bool ok, std::string const& reason) {
     auto done      = std::move(gSession.done);
     gSession       = Session{};
     if (done) done(ok, reason);
-    if (gReopen && !InventorySession::busy()) {
-        gReopen = false;
-        auto ci = ll::service::getClientInstance();
-        if (ci && ci->getTopScreenName() != "inventory_screen") openInventoryLikeKey();
-    }
 }
 
 void closeHidden(ContainerScreenController& csc) {
@@ -87,11 +81,7 @@ void InventorySession::uninstall() { gSession = Session{}; }
 
 bool InventorySession::busy() { return gSession.state != State::Idle; }
 
-bool InventorySession::onInventoryKey() {
-    if (!busy()) return false;
-    gReopen = true;
-    return true;
-}
+bool InventorySession::onInventoryKey() { return busy(); }
 
 nlohmann::json InventorySession::lastResult() { return gLast; }
 

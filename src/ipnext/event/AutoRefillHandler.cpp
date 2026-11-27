@@ -26,6 +26,7 @@
 #include "platform/i18n/I18n.h"
 #include "platform/input/KeyCodes.h"
 #include "platform/inventory/InventorySession.h"
+#include "platform/inventory/LegacySwap.h"
 #include "platform/inventory/SlotClicker.h"
 #include "platform/item/ScopedItemRegistry.h"
 #include "platform/render/Gui2d.h"
@@ -225,7 +226,8 @@ struct AutoRefillHandler::Monitor {
         int  stored    = storedSlotId;
         bool stackable = isStackable(currentItem.itemType);
         auto replacing = readInv(found).itemType;
-        bool requested = platform::inventory::InventorySession::request([stored, found, stackable](ContainerScreenController& csc, ContainerManagerController& mgr) {
+        bool requested = platform::inventory::legacy::available() && platform::inventory::legacy::swapSlots(stored, found);
+        if (!requested) requested = platform::inventory::InventorySession::request([stored, found, stackable](ContainerScreenController& csc, ContainerManagerController& mgr) {
             auto menu = platform::inventory::ContainerMenu::fromManager(mgr, "inventory_screen", &csc);
             platform::inventory::SlotClicker clicker(csc, menu);
             auto slotOf = [&](int inv) -> int {
